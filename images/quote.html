@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hennox 585cc - Request Quote</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --yellow: #ffb400;
+        --dark: #0f0f0f;
+        --card: #181818;
+        --text: #f5f5f5;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+      body {
+        background: var(--dark);
+        color: var(--text);
+        padding: 40px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+      .card {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid #2a2a2a;
+      }
+      h1 {
+        color: var(--yellow);
+        margin-bottom: 10px;
+      }
+      p {
+        margin-bottom: 25px;
+        color: #ccc;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        padding: 14px;
+        border-radius: 10px;
+        border: 1px solid #333;
+        background: #111;
+        color: white;
+      }
+      textarea {
+        min-height: 120px;
+      }
+      .btn {
+        margin-top: 30px;
+        background: var(--yellow);
+        color: black;
+        border: none;
+        padding: 16px 30px;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .back-btn {
+        display: inline-block;
+        margin-bottom: 25px;
+        color: var(--yellow);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-btn:hover {
+        transform: translateX(-5px);
+        color: #ffd166;
+      }
+      .preview {
+        margin-top: 40px;
+        display: none;
+        background: white;
+        color: black;
+        padding: 40px;
+        border-radius: 20px;
+      }
+      .preview h2 {
+        color: #d58b00;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .table th,
+      .table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      .table th {
+        background: #f0a000;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <a href="../Hennox_Index.html" class="back-btn">← Back to Home</a>
+        <h1>Request A Quote</h1>
+        <p>
+          Leave your contact details and we will contact you with a quotation.
+        </p>
+
+        <div class="grid">
+          <div class="input-group">
+            <label>Company Name</label>
+            <input id="company" required />
+          </div>
+
+          <div class="input-group">
+            <label>Contact Person</label>
+            <input id="contactPerson" required />
+          </div>
+
+          <div class="input-group">
+            <label>Phone Number</label>
+            <input id="phone" required />
+          </div>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input id="email" type="email" required />
+          </div>
+        </div>
+
+        <button class="btn" onclick="generateQuote()">Generate Quote</button>
+      </div>
+
+      <div id="preview" class="preview"></div>
+    </div>
+
+    <script>
+      function generateQuote() {
+        const company = document.getElementById("company").value;
+        const contactPerson = document.getElementById("contactPerson").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+
+        const preview = document.getElementById("preview");
+        preview.style.display = "block";
+        preview.innerHTML = `
+<h2>THANK YOU</h2>
+<hr><br>
+<p>Your quotation request has been received.</p>
+<br>
+<p><strong>Company:</strong> ${company}</p>
+<p><strong>Contact Person:</strong> ${contactPerson}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+<p><strong>Email:</strong> ${email}</p>
+<br>
+<p>A Hennox 585cc representative will contact you shortly.</p>
+`;
+
+        preview.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

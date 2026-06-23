@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hennox 585cc Plant Hire</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --yellow: #ffb400;
+        --dark: #0d0d0d;
+        --card: #171717;
+        --text: #f5f5f5;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Montserrat, sans-serif;
+        background: var(--dark);
+        color: var(--text);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 15px rgba(255, 180, 0, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 35px rgba(255, 180, 0, 0.5);
+        }
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+        position: relative;
+        padding-bottom: 6px;
+        transition: color 0.3s ease;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background: var(--yellow);
+        border-radius: 10px;
+        transition: width 0.35s ease;
+      }
+
+      nav a:hover {
+        color: var(--yellow);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+      .hero {
+        height: 100vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+          url("images/gallery1.jpeg") center/cover;
+        display: flex;
+        align-items: center;
+        padding: 0 8%;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 180, 0, 0.15),
+          transparent 70%
+        );
+        top: -250px;
+        right: -200px;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero div {
+        position: relative;
+        z-index: 2;
+        animation: fadeUp 1.2s ease;
+      }
+      .hero h1 {
+        font-size: 5rem;
+        font-weight: 800;
+        max-width: 800px;
+      }
+      .hero span {
+        color: var(--yellow);
+      }
+      .hero p {
+        margin: 20px 0;
+        font-size: 1.2rem;
+        max-width: 700px;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--yellow);
+        color: #000;
+        padding: 16px 32px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        animation: pulseGlow 3s infinite;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px) scale(1.05);
+      }
+      section {
+        padding: 100px 8%;
+      }
+      h2 {
+        font-size: 3rem;
+        color: var(--yellow);
+        margin-bottom: 20px;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 4px;
+        background: var(--yellow);
+        margin-top: 12px;
+        border-radius: 50px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+      .card {
+        background: var(--card);
+        padding: 35px;
+        border-radius: 20px;
+        border: 1px solid #262626;
+        transition: 0.3s;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(255, 180, 0, 0.15);
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+      }
+      .gallery img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 20px;
+        transition:
+          transform 0.6s ease,
+          filter 0.6s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.08);
+        filter: brightness(1.15);
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        text-align: center;
+      }
+      .stat {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 20px;
+        transition: all 0.4s ease;
+      }
+
+      .stat:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(255, 180, 0, 0.15);
+      }
+      .cta {
+        text-align: center;
+        background: linear-gradient(135deg, #111, #1c1c1c);
+      }
+      footer {
+        text-align: center;
+        padding: 50px 30px;
+        background: #000;
+        border-top: 1px solid #222;
+      }
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div><strong style="color: #ffb400">HENNOX 585CC</strong></div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <h1>
+          Reliable <span>TLB Plant Hire</span> For Construction & Earthmoving
+          Projects
+        </h1>
+        <p>
+          Professional TLB hire with experienced operators. Site clearing,
+          excavation, trenching, foundation preparation and earthmoving services
+          across South Africa.
+        </p>
+        <a href="images/quote.html" class="btn">Request A Quote</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="stats">
+        <div class="stat">
+          <h3>100%</h3>
+          <p>Maintained Equipment</p>
+        </div>
+        <div class="stat">
+          <h3>24/7</h3>
+          <p>Support</p>
+        </div>
+        <div class="stat">
+          <h3>SA</h3>
+          <p>Coverage</p>
+        </div>
+        <div class="stat">
+          <h3>TLB</h3>
+          <p>Specialists</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        Hennox 585cc Plant Hire delivers reliable earthmoving solutions with
+        professional operators and well-maintained machinery. We help
+        construction projects stay on schedule through dependable service,
+        safety, and operational excellence.
+      </p>
+      <br /><br />
+      <div class="grid">
+        <div class="card">
+          <h3>Professional Operators</h3>
+          <p>
+            Qualified and experienced operators committed to safety,
+            productivity and quality workmanship on every project.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Reliable Equipment</h3>
+          <p>
+            Our machinery is regularly serviced and maintained to ensure maximum
+            uptime and dependable performance.
+          </p>
+        </div>
+        <div class="card">
+          <h3>On-Time Delivery</h3>
+          <p>
+            We understand construction deadlines and strive to deliver equipment
+            and services when you need them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>TLB Hire</h3>
+          <p>Daily, weekly and project-based hire options.</p>
+        </div>
+        <div class="card">
+          <h3>Excavation</h3>
+          <p>Professional trenching and earthmoving operations.</p>
+        </div>
+        <div class="card">
+          <h3>Site Clearing</h3>
+          <p>Vegetation removal and site preparation.</p>
+        </div>
+        <div class="card">
+          <h3>Foundation Work</h3>
+          <p>Accurate foundation excavation and grading.</p>
+        </div>
+      </div>
+      <br /><br />
+      <p
+        style="
+          text-align: center;
+          max-width: 900px;
+          margin: auto;
+          line-height: 1.8;
+        "
+      >
+        From residential developments and roadworks to commercial construction
+        and agricultural projects, Hennox 585cc provides dependable plant hire
+        solutions tailored to your project requirements.
+      </p>
+    </section>
+
+    <section id="gallery">
+      <h2>Project Gallery</h2>
+      <div class="gallery">
+        <img src="images/gallery1.jpeg" />
+        <img src="images/gallery2.jpeg" />
+        <img src="images/gallery3.jpeg" />
+        <img src="images/gallery7.jpg" />
+        <img src="images/gallery5.jpg" />
+        <img src="images/gallery6.jpg" />
+      </div>
+      <div style="margin-top: 40px; text-align: center">
+        <p style="max-width: 900px; margin: auto; line-height: 1.8">
+          Our completed and ongoing projects demonstrate our commitment to
+          quality, safety and operational excellence. We take pride in
+          delivering efficient earthmoving and site preparation services across
+          a variety of industries.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Need Plant Hire?</h2>
+      <p>Contact us today for a competitive quote.</p>
+      <br />
+      <div class="grid" style="margin: 40px 0">
+        <div class="card">
+          <h3>Fast Quotations</h3>
+          <p>
+            Receive competitive pricing and quick turnaround times for your
+            project requirements.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Flexible Hire Periods</h3>
+          <p>
+            Daily, weekly and long-term hire options available to suit your
+            schedule and budget.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Safety First</h3>
+          <p>
+            We operate according to industry best practices with a strong focus
+            on safety and reliability.
+          </p>
+        </div>
+      </div>
+      <a class="btn" href="tel:+27832940075">Call Now</a>
+      <br /><br />
+      <p>+27 83 294 0075 | +27 79 774 0060 | +27 76 850 5523</p>
+      <p>mkmathepe@gmail.com</p>
+      <p>Senwamokgope Village</p>
+    </section>
+
+    <footer>
+      <h3 style="color: #ffb400; margin-bottom: 15px">
+        HENNOX 585CC PLANT HIRE
+      </h3>
+      <p>Professional TLB Hire • Excavation • Site Clearing • Earthmoving</p>
+      <br />
+      <p>
+        Serving construction, commercial and agricultural projects across South
+        Africa.
+      </p>
+      <br />
+      <p>© Hennox 585cc Plant Hire. All Rights Reserved.</p>
+    </footer>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll(".card,.stat,section h2,section p")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(40px)";
+          el.style.transition = "all .8s ease";
+          observer.observe(el);
+        });
+
+      const hero = document.querySelector(".hero");
+      document.addEventListener("mousemove", (e) => {
+        const x = (window.innerWidth / 2 - e.clientX) / 40;
+        const y = (window.innerHeight / 2 - e.clientY) / 40;
+        hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+      });
+    </script>
+  </body>
+</html>
