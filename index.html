@@ -23,7 +23,13 @@
       }
       body {
         font-family: Montserrat, sans-serif;
-        background: var(--dark);
+        background:
+          linear-gradient(rgba(15, 15, 15, 0.55), rgba(15, 15, 15, 0.55)),
+          url("images/Hennoxbackground.jpeg");
+        background-size: 115%;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
         color: var(--text);
       }
       html {
@@ -183,7 +189,9 @@
         gap: 30px;
       }
       .card {
-        background: var(--card);
+        background: rgba(23, 23, 23, 0.82);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         padding: 35px;
         border-radius: 20px;
         border: 1px solid #262626;
@@ -221,7 +229,9 @@
         text-align: center;
       }
       .stat {
-        background: var(--card);
+        background: rgba(23, 23, 23, 0.82);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         padding: 30px;
         border-radius: 20px;
         transition: all 0.4s ease;
