@@ -73,9 +73,10 @@
         z-index: 1000;
         background: rgba(2, 2, 2, 0.85);
         backdrop-filter: blur(8px);
-        padding: 20px 8%;
+        padding: 12px 8%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
       nav a {
         color: white;
@@ -104,6 +105,26 @@
 
       nav a:hover::after {
         width: 100%;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 110px;
+        height: 110px;
+        object-fit: contain;
+        border-radius: 12px;
+      }
+
+      .logo-text {
+        color: var(--yellow);
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
       }
       .hero {
         height: 100vh;
@@ -246,10 +267,41 @@
         background: linear-gradient(135deg, #111, #1c1c1c);
       }
       footer {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        text-align: left;
         padding: 50px 30px;
         background: #000;
         border-top: 1px solid #222;
+      }
+
+      .footer-logo {
+        width: 250px;
+        height: 250px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 40px;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .footer-main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
       @media (max-width: 768px) {
         .hero h1 {
@@ -258,12 +310,21 @@
         .stats {
           grid-template-columns: repeat(2, 1fr);
         }
+        footer {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
       }
     </style>
   </head>
   <body>
     <nav>
-      <div><strong style="color: #ffb400">HENNOX 585CC</strong></div>
+      <img src="images/hennoxLogo.png" alt="Hennox 585cc Logo" class="logo" />
+      <div class="logo-text">HENNOX 585CC</div>
       <div>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -432,17 +493,36 @@
     </section>
 
     <footer>
-      <h3 style="color: #ffb400; margin-bottom: 15px">
-        HENNOX 585CC PLANT HIRE
-      </h3>
-      <p>Professional TLB Hire • Excavation • Site Clearing • Earthmoving</p>
-      <br />
-      <p>
-        Serving construction, commercial and agricultural projects across South
-        Africa.
-      </p>
-      <br />
-      <p>© Hennox 585cc Plant Hire. All Rights Reserved.</p>
+      <img
+        src="images/hennoxLogo.png"
+        alt="Hennox 585cc Logo"
+        class="footer-logo"
+      />
+      <div class="footer-content">
+        <div class="footer-main">
+          <h3 style="color: #ffb400; margin-bottom: 15px">
+            HENNOX 585CC PLANT HIRE
+          </h3>
+          <p>
+            Professional TLB Hire • Excavation • Site Clearing • Earthmoving
+          </p>
+          <br />
+          <p>
+            Serving construction, commercial and agricultural projects across
+            South Africa.
+          </p>
+          <br />
+          <p>© Hennox 585cc Plant Hire. All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-contact">
+          <p><strong>Phone:</strong> +27 83 294 0075</p>
+          <p><strong>Phone:</strong> +27 79 774 0060</p>
+          <p><strong>Phone:</strong> +27 76 850 5523</p>
+          <p><strong>Email:</strong> mkmathepe@gmail.com</p>
+          <p><strong>Location:</strong> Senwamokgope Village</p>
+        </div>
+      </div>
     </footer>
     <script>
       const observer = new IntersectionObserver(
